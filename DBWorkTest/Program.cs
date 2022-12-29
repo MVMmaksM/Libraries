@@ -8,7 +8,7 @@ namespace DBWorkTest
         {
             string connectionString = "Server=P45-DB08; Database = Test; Trusted_Connection = True; Encrypt = False ";
             
-            ApplicationContext appContext = new ApplicationContext(connectionString);        
+            ApplicationContext appContext = new ApplicationContext(connectionString);              
         }
     }
 }
