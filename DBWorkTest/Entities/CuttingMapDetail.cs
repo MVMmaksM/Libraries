@@ -10,8 +10,6 @@ namespace DBWorkLibraries.Entities
     {
         public long CuttingMapId { get; set; }
         public CuttingMap? CuttingMap { get; set; }
-
-        public long DetailId { get; set; }
-        public Detail? Detail { get; set; }
+        public List<Detail> Details { get; set; }       
     }
 }
