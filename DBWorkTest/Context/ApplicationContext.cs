@@ -23,5 +23,9 @@ namespace DBWorkLibraries.Context
         {
             optionsBuilder.UseSqlServer(_connectionString);
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CuttingMapDetail>().HasNoKey();
+        }
     }
 }
