@@ -1,13 +1,11 @@
-﻿
-namespace DBWorkLibraries.Entities
+﻿namespace DBWorkLibraries.Entities;
+
+public class Sheet
 {
-    internal class Sheet
-    {
-        public long Id { get; }
-        public string Title { get; set; }
-        public string FullName { get; set; }
-        public float Width { get; set; }
-        public float Height { get; set; }
-        public CuttingMap CuttingMap { get; set; }
-    }
+    public long Id { get; set; }
+    public string Title { get; set; } = null!;
+    public string FullName { get; set; } = null!;
+    public float Width { get; set; }
+    public float Height { get; set; }
+    public virtual ICollection<CuttingMap> CuttingMaps { get; } = new List<CuttingMap>();
 }

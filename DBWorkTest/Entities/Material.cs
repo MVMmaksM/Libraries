@@ -1,12 +1,9 @@
-﻿
-namespace DBWorkLibraries.Entities
+﻿namespace DBWorkLibraries.Entities;
+public class Material
 {
-    internal class Material
-    {
-        public long Id { get; }
-        public string Title { get; set; }
-        public string FullName { get; set; }
-        public float Thick { get; set; }
-        public CuttingMap CuttingMap { get; set; }
-    }
+    public long Id { get;}
+    public string Title { get; set; } = null!;
+    public string FullName { get; set; } = null!;
+    public float Thick { get; set; }
+    public ICollection<CuttingMap> CuttingMaps { get; } = new List<CuttingMap>();
 }

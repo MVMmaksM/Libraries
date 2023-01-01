@@ -8,17 +8,12 @@ namespace DBWorkTest.Entities.Configuring
     {
         public void Configure(EntityTypeBuilder<Sheet> entity)
         {
-            entity.ToTable(nameof(Sheet));
+            entity.HasKey(k => k.Id).HasName("PK__Sheet");
+            
+            entity.ToTable("Sheet");
 
-            entity.HasKey(s => s.Id).HasName("PK_Sheet");
-            entity.Property(p=>p.Title).HasMaxLength(100).IsRequired(true);
-            entity.Property(p=>p.FullName).HasMaxLength(100).IsRequired(true);
-            entity.Property(p=>p.Width).IsRequired(true);
-            entity.Property(p=>p.Height).IsRequired(true);
-           
-            entity.HasOne(s => s.CuttingMap)
-                .WithOne(c => c.Sheet) // один к одному
-                .HasForeignKey<CuttingMap>(c => c.SheetId); // внешний ключ для CuttingMap
+            entity.Property(p => p.FullName).HasMaxLength(100);
+            entity.Property(p => p.Title).HasMaxLength(100);
         }
     }
 }

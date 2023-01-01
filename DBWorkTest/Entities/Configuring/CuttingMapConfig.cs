@@ -8,15 +8,22 @@ namespace DBWorkTest.Entities.Configuring
     {
         public void Configure(EntityTypeBuilder<CuttingMap> entity)
         {
-            entity.ToTable(nameof(CuttingMap));
+            entity.HasKey(k => k.Id).HasName("PK__CuttingMap");
 
-            entity.HasKey(c => c.Id).HasName("PK_CuttingMap");
-            entity.Property(p => p.Title).HasMaxLength(100).IsRequired(true);
-            entity.Property(p => p.FullName).HasMaxLength(100).IsRequired(true);
+            entity.ToTable("CuttingMap");
 
-            entity.HasOne(cm => cm.CuttingMapDetail)
-                .WithOne(cmd => cmd.CuttingMap)
-                .HasForeignKey<CuttingMapDetail>(cmd=>cmd.CuttingMapId);
+            entity.Property(p => p.FullName).HasMaxLength(100);
+            entity.Property(p => p.Title).HasMaxLength(100);
+
+            entity.HasOne(c => c.Material).WithMany(m => m.CuttingMaps)
+                .HasForeignKey(c => c.MaterialId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__CuttingMapMaterial");
+
+            entity.HasOne(c => c.Sheet).WithMany(s => s.CuttingMaps)
+                .HasForeignKey(c => c.SheetId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__CuttingMapSheet");
         }
     }
 }

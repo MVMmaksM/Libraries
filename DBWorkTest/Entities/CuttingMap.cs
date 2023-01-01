@@ -1,17 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace DBWorkLibraries.Entities
+﻿namespace DBWorkLibraries.Entities;
+public class CuttingMap
 {
-    internal class CuttingMap
-    {
-        public long Id { get; }
-        public string Title { get; set; }
-        public string FullName { get; set; }
-        public long MaterialId { get; set; } // внешний ключ
-        public Material Material { get; set; } // навигационное св-во
-        public long SheetId { get; set; } // внешний ключ
-        public Sheet Sheet { get; set; } // навигационное св-во
-        public long CuttingMapDetailId { get; set; }
-        public CuttingMapDetail CuttingMapDetail { get; set; }        
-    }
+    public long Id { get;}
+    public string Title { get; set; } = null!;
+    public string FullName { get; set; } = null!;
+    public long MaterialId { get; set; }
+    public long SheetId { get; set; }
+    public ICollection<CuttingMapDetail> CuttingMapDetails { get; } = new List<CuttingMapDetail>();
+    public Material Material { get; set; } = null!;
+    public Sheet Sheet { get; set; } = null!;
 }

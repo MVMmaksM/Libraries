@@ -1,11 +1,9 @@
-﻿
-namespace DBWorkLibraries.Entities
+﻿namespace DBWorkLibraries.Entities;
+public partial class CuttingMapDetail
 {
-    internal class CuttingMapDetail
-    {  
-        public long CuttingMapId { get;}
-        public CuttingMap? CuttingMap { get; set; }
-        public long DetailId { get; set; }
-        public List<Detail> Details { get; set; }     
-    }
+    public long Id { get;}
+    public long CuttingMapId { get; set; }
+    public long DetailId { get; set; }
+    public CuttingMap CuttingMap { get; set; } = null!;
+    public Detail Detail { get; set; } = null!;
 }

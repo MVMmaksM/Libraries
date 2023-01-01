@@ -8,15 +8,12 @@ namespace DBWorkTest.Entities.Configuring
     {
         public void Configure(EntityTypeBuilder<Material> entity)
         {
-            entity.ToTable(nameof(Material));
+            entity.HasKey(k => k.Id).HasName("PK__Material");
 
-            entity.HasKey(m => m.Id).HasName("PK_Material");
-            entity.Property(p=>p.Title).HasMaxLength(100).IsRequired(true);
-            entity.Property(p=>p.FullName).HasMaxLength(100).IsRequired(true);
-            entity.Property(p=>p.Thick).IsRequired(true);
-            entity.HasOne(m=>m.CuttingMap)
-                .WithOne(c=>c.Material) //один к олному
-                .HasForeignKey<CuttingMap>(c=>c.MaterialId); // внешний ключ для CuttingMap            
+            entity.ToTable("Material");
+
+            entity.Property(p => p.FullName).HasMaxLength(100);
+            entity.Property(p => p.Title).HasMaxLength(100);
         }
     }
 }

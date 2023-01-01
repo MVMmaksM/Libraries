@@ -8,16 +8,17 @@ namespace DBWorkLibraries.Context
     internal class ApplicationContext : DbContext
     {
         private string _connectionString;     
-        public DbSet<Detail> Details { get; set; }        
-        public DbSet<Material> Materials { get; set; }
-        public DbSet<Sheet> Sheets { get; set; }
-        public DbSet<CuttingMap> CuttingMaps { get; set; }
-        public DbSet<CuttingMapDetail> CuttingMapDetails { get; set; }
+        public DbSet<Detail> Detail { get; set; }        
+        public DbSet<Material> Material { get; set; }
+        public DbSet<Sheet> Sheet { get; set; }
+        public DbSet<CuttingMap> CuttingMap { get; set; }
+        public DbSet<CuttingMapDetail> CuttingMapDetail { get; set; }
 
 
         public ApplicationContext(string connectionString)
         {
             _connectionString = connectionString;
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
