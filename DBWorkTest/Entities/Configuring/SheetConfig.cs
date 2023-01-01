@@ -13,6 +13,10 @@ namespace DBWorkTest.Entities.Configuring
             entity.Property(p=>p.FullName).HasMaxLength(100).IsRequired(true);
             entity.Property(p=>p.Width).IsRequired(true);
             entity.Property(p=>p.Height).IsRequired(true);
+           
+            entity.HasOne(s => s.CuttingMap)
+                .WithOne(c => c.Sheet) // один к одному
+                .HasForeignKey<CuttingMap>(c => c.SheetId); // внешний ключ для CuttingMap
         }
     }
 }
