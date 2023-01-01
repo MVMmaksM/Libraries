@@ -10,7 +10,7 @@ namespace DBWorkTest.Entities.Configuring
         {
             entity.HasKey(c => c.Id).HasName("PK_CuttingMap");
             entity.Property(p => p.Title).HasMaxLength(100).IsRequired(true);
-            entity.Property(p => p.FullName).HasMaxLength(100).IsRequired(true);
+            entity.Property(p => p.FullName).HasMaxLength(100).IsRequired(true);           
         }
     }
 }

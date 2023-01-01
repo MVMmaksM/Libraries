@@ -6,7 +6,7 @@ namespace DBWorkTest
     {
         static void Main(string[] args)
         {
-            string connectionString = "Server=P45-DB08; Database = Test; Trusted_Connection = True; Encrypt = False ";
+            string connectionString = "Server=DESKTOP-NBEJJSO; Database = Test; Trusted_Connection = True; Encrypt = False ";
             
             ApplicationContext appContext = new ApplicationContext(connectionString);          
         }
