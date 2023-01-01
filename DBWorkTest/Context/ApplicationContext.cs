@@ -1,5 +1,6 @@
 ﻿using DBWorkLibraries.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace DBWorkLibraries.Context
 {
@@ -25,7 +26,8 @@ namespace DBWorkLibraries.Context
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CuttingMapDetail>().HasNoKey();
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            //modelBuilder.Entity<CuttingMapDetail>().HasNoKey();
         }
     }
 }
