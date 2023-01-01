@@ -8,6 +8,7 @@ namespace DBWorkTest.Entities.Configuring
     {
         public void Configure(EntityTypeBuilder<Sheet> entity)
         {
+            entity.HasKey(s => s.Id).HasName("PK_Sheet");
             entity.Property(p=>p.Title).HasMaxLength(100).IsRequired(true);
             entity.Property(p=>p.FullName).HasMaxLength(100).IsRequired(true);
             entity.Property(p=>p.Width).IsRequired(true);
