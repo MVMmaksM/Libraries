@@ -8,6 +8,8 @@ namespace DBWorkTest.Entities.Configuring
     {
         public void Configure(EntityTypeBuilder<CuttingMapDetail> entity)
         {
+            entity.ToTable(nameof(CuttingMapDetail));
+
             entity.HasKey(cmd=> new {cmd.DetailId, cmd.CuttingMapId });
         }
     }

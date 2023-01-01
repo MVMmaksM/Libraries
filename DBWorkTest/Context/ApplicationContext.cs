@@ -1,13 +1,14 @@
 ﻿using DBWorkLibraries.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 
 namespace DBWorkLibraries.Context
 {
     internal class ApplicationContext : DbContext
     {
-        private string _connectionString;        
-        public DbSet<Detail> Details { get; set; }
+        private string _connectionString;     
+        public DbSet<Detail> Details { get; set; }        
         public DbSet<Material> Materials { get; set; }
         public DbSet<Sheet> Sheets { get; set; }
         public DbSet<CuttingMap> CuttingMaps { get; set; }

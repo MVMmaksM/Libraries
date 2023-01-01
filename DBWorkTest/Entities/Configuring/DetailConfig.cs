@@ -8,6 +8,8 @@ namespace DBWorkTest.Entities.Configuring
     {
         public void Configure(EntityTypeBuilder<Detail> entity)
         {
+            entity.ToTable(nameof(Detail)); // имя таблицы в БД
+
             entity.HasKey(d => d.Id).HasName("PK_Detail");
             entity.Property(p => p.Title).HasMaxLength(100).IsRequired(true);
             entity.Property(p => p.FullName).HasMaxLength(100).IsRequired(true);

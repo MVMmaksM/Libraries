@@ -8,6 +8,8 @@ namespace DBWorkTest.Entities.Configuring
     {
         public void Configure(EntityTypeBuilder<CuttingMap> entity)
         {
+            entity.ToTable(nameof(CuttingMap));
+
             entity.HasKey(c => c.Id).HasName("PK_CuttingMap");
             entity.Property(p => p.Title).HasMaxLength(100).IsRequired(true);
             entity.Property(p => p.FullName).HasMaxLength(100).IsRequired(true);
