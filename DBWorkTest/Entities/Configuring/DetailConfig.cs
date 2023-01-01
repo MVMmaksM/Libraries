@@ -12,6 +12,10 @@ namespace DBWorkTest.Entities.Configuring
             entity.Property(p => p.Title).HasMaxLength(100).IsRequired(true);
             entity.Property(p => p.FullName).HasMaxLength(100).IsRequired(true);
             entity.Property(p => p.Contours).IsRequired(true);
+
+            entity.HasOne(d => d.CuttingMapDetail)
+                .WithMany(cmd => cmd.Details)
+                .HasForeignKey(d => new {d.CuttingMapDetailId, d.CuttingMapId });
         }
     }
 }

@@ -8,7 +8,7 @@ namespace DBWorkTest.Entities.Configuring
     {
         public void Configure(EntityTypeBuilder<CuttingMapDetail> entity)
         {
-            entity.HasNoKey();
+            entity.HasKey(cmd=> new {cmd.DetailId, cmd.CuttingMapId });
         }
     }
 }
