@@ -1,5 +1,7 @@
 ﻿using DBWorkLibraries.Context;
 using DBWorkLibraries.Entities;
+using DBWorkTest.DBWork;
+using System.Text;
 
 namespace DBWorkTest
 {
@@ -7,15 +9,30 @@ namespace DBWorkTest
     {
         static void Main(string[] args)
         {
-            string connectionString = "Server=DESKTOP-NBEJJSO; Database = Test; Trusted_Connection = True; Encrypt = False ";
+            string connectionString = "Server=DESKTOP-NBEJJSO; Database = Test4; Trusted_Connection = True; Encrypt = False ";
 
-            ApplicationContext appContext = new ApplicationContext(connectionString);
+            DataBaseWork dbWork = new DataBaseWork(connectionString);
+            
+            byte[] bytes = Encoding.ASCII.GetBytes(connectionString);
 
-           
+            ICollection<Detail> details = new List<Detail>()
+            {
+                new Detail() {Title = "Шестеренка", FullName = "Шестеренка распредвала", Contours = bytes },
+                new Detail() {Title = "Шпилька", FullName = "Шпилька распредвала", Contours = bytes },
+                new Detail() {Title = "Распредвал", FullName = "Распредвал для КЗКТ", Contours = bytes },
+                new Detail() {Title = "Коленвал", FullName = "Коленвал Т-150", Contours = bytes },
+            };
 
-            //appContext.Detail.Add(detail);
+            string sqlQuery = "SELECT * FROM Material";
 
-            //appContext.SaveChanges();
+            var result = dbWork.SelectSqlFromDetail(sqlQuery);
+
+            foreach (var item in result)
+            {
+                Console.WriteLine($"Название детали: {item.Title}");
+                Console.WriteLine($"Описание детали: {item.FullName}");
+                Console.WriteLine();
+            }
         }
     }
 }

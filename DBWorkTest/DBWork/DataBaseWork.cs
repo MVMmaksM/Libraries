@@ -1,4 +1,7 @@
 ﻿using DBWorkLibraries.Context;
+using DBWorkLibraries.Entities;
+using DBWorkTest.Entities.Configuring;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,5 +32,113 @@ namespace DBWorkTest.DBWork
             }
         }
 
+        public void InsertDetail(ICollection<Detail> details)
+        {
+            if (details is not null)
+            {
+                using (var appContext = new ApplicationContext(ConnectionString))
+                {
+                    appContext.Detail.AddRange(details);
+                    appContext.SaveChanges();
+                }
+            }
+            else
+            {
+                throw new Exception("Details is null");
+            }
+        }
+
+        public void InsertMaterial(ICollection<Material> materials) 
+        {
+            if (materials is not null)
+            {
+                using (var appContext = new ApplicationContext(ConnectionString))
+                {
+                    appContext.Material.AddRange(materials);
+                    appContext.SaveChanges();
+                }
+            }
+            else
+            {
+                throw new Exception("Materials is null");
+            }
+        }
+
+        public void InsertSheet(ICollection<Sheet> sheets) 
+        {
+            if (sheets is not null)
+            {
+                using (var appContext = new ApplicationContext(ConnectionString))
+                {
+                    appContext.Sheet.AddRange(sheets);
+                    appContext.SaveChanges();
+                }
+            }
+            else
+            {
+                throw new Exception("Sheets is null");
+            }
+        }
+
+        public void InsertCuttingMap(ICollection<CuttingMap> cuttingMaps) 
+        {
+            if (cuttingMaps is not null)
+            {
+                using (var appContext = new ApplicationContext(ConnectionString))
+                {
+                    appContext.CuttingMap.AddRange(cuttingMaps);
+                    appContext.SaveChanges();
+                }
+            }
+            else
+            {
+                throw new Exception("CuttingMaps is null");
+            }
+        }
+
+        public ICollection<Detail> SelectSqlFromDetail(string sqlQuery) 
+        {
+            if (!string.IsNullOrWhiteSpace(sqlQuery))
+            {
+                using (var appContext = new ApplicationContext(ConnectionString))
+                {
+                   return appContext.Detail.FromSqlRaw(sqlQuery).ToList();                    
+                }
+            }
+            else
+            {
+                throw new Exception("SqlQuery is null");
+            }
+        }
+
+        public ICollection<Material> SelectSqlFromMaterial(string sqlQuery)
+        {
+            if (!string.IsNullOrWhiteSpace(sqlQuery))
+            {
+                using (var appContext = new ApplicationContext(ConnectionString))
+                {
+                    return appContext.Material.FromSqlRaw(sqlQuery).ToList();
+                }
+            }
+            else
+            {
+                throw new Exception("SqlQuery is null");
+            }
+        }
+
+        public ICollection<Sheet> SelectSqlFromSheet(string sqlQuery)
+        {
+            if (!string.IsNullOrWhiteSpace(sqlQuery))
+            {
+                using (var appContext = new ApplicationContext(ConnectionString))
+                {
+                    return appContext.Sheet.FromSqlRaw(sqlQuery).ToList();
+                }
+            }
+            else
+            {
+                throw new Exception("SqlQuery is null");
+            }
+        }
     }
 }
