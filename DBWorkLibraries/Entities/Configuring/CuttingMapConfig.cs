@@ -12,8 +12,10 @@ namespace DBWorkTest.Entities.Configuring
 
             entity.ToTable("CuttingMap");
 
-            entity.Property(p => p.FullName).HasMaxLength(100);
-            entity.Property(p => p.Title).HasMaxLength(100);
+            entity.Property(p => p.FullName).HasMaxLength(100).IsConcurrencyToken();
+            entity.Property(p => p.Title).HasMaxLength(100).IsConcurrencyToken();
+            entity.Property(p => p.MaterialId).IsConcurrencyToken();
+            entity.Property(p => p.SheetId).IsConcurrencyToken();
 
             entity.HasOne(c => c.Material).WithMany(m => m.CuttingMaps)
                 .HasForeignKey(c => c.MaterialId)

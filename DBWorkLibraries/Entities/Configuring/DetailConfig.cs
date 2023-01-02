@@ -12,8 +12,9 @@ namespace DBWorkTest.Entities.Configuring
 
             entity.ToTable("Detail");
 
-            entity.Property(p => p.FullName).HasMaxLength(100);
-            entity.Property(p => p.Title).HasMaxLength(100);
+            entity.Property(p => p.FullName).HasMaxLength(100).IsConcurrencyToken();
+            entity.Property(p => p.Title).HasMaxLength(100).IsConcurrencyToken();
+            entity.Property(p => p.Contours).IsConcurrencyToken();
         }
     }
 }

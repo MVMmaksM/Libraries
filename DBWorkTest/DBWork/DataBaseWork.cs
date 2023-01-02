@@ -48,7 +48,7 @@ namespace DBWorkTest.DBWork
             }
         }
 
-        public void InsertMaterial(ICollection<Material> materials) 
+        public void InsertMaterial(ICollection<Material> materials)
         {
             if (materials is not null)
             {
@@ -64,7 +64,7 @@ namespace DBWorkTest.DBWork
             }
         }
 
-        public void InsertSheet(ICollection<Sheet> sheets) 
+        public void InsertSheet(ICollection<Sheet> sheets)
         {
             if (sheets is not null)
             {
@@ -80,7 +80,7 @@ namespace DBWorkTest.DBWork
             }
         }
 
-        public void InsertCuttingMap(ICollection<CuttingMap> cuttingMaps) 
+        public void InsertCuttingMap(ICollection<CuttingMap> cuttingMaps)
         {
             if (cuttingMaps is not null)
             {
@@ -96,13 +96,13 @@ namespace DBWorkTest.DBWork
             }
         }
 
-        public ICollection<Detail> SelectSqlFromDetail(string sqlQuery) 
+        public ICollection<Detail> SelectSqlFromDetail(string sqlQuery)
         {
             if (!string.IsNullOrWhiteSpace(sqlQuery))
             {
                 using (var appContext = new ApplicationContext(ConnectionString))
                 {
-                   return appContext.Detail.FromSqlRaw(sqlQuery).ToList();                    
+                    return appContext.Detail.FromSqlRaw(sqlQuery).ToList();
                 }
             }
             else

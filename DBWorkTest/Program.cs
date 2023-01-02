@@ -23,7 +23,7 @@ namespace DBWorkTest
                 new Detail() {Title = "Коленвал", FullName = "Коленвал Т-150", Contours = bytes },
             };
 
-            string sqlQuery = "SELECT * FROM Material";
+            string sqlQuery = "SELECT * FROM Detail";
 
             var result = dbWork.SelectSqlFromDetail(sqlQuery);
 
