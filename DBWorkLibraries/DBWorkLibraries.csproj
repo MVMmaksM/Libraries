@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DBWork\" />
+    <Compile Remove="DBWork\**" />
+    <EmbeddedResource Remove="DBWork\**" />
+    <None Remove="DBWork\**" />
   </ItemGroup>
 
   <ItemGroup>

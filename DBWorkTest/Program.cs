@@ -11,7 +11,7 @@ namespace DBWorkTest
 
             ApplicationContext appContext = new ApplicationContext(connectionString);
 
-            Detail detail = new Detail { Title = "sdfdsf", FullName = "dsfsdf", Contours = new byte[5] };
+           
 
             //appContext.Detail.Add(detail);
 

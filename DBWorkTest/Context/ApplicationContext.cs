@@ -13,23 +13,20 @@ namespace DBWorkLibraries.Context
         public DbSet<Sheet> Sheet { get; set; }
         public DbSet<CuttingMap> CuttingMap { get; set; }
         public DbSet<CuttingMapDetail> CuttingMapDetail { get; set; }
-
-
+               
         public ApplicationContext(string connectionString)
         {
-            _connectionString = connectionString;
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            _connectionString = connectionString;            
+            //Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(_connectionString);
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder entityBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            //modelBuilder.Entity<CuttingMapDetail>().HasNoKey();
+            entityBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());           
         }
     }
 }
