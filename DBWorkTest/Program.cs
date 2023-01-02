@@ -12,7 +12,7 @@ namespace DBWorkTest
             string connectionString = "Server=DESKTOP-NBEJJSO; Database = Test4; Trusted_Connection = True; Encrypt = False ";
 
             DataBaseWork dbWork = new DataBaseWork(connectionString);
-            
+
             byte[] bytes = Encoding.ASCII.GetBytes(connectionString);
 
             ICollection<Detail> details = new List<Detail>()
@@ -23,16 +23,19 @@ namespace DBWorkTest
                 new Detail() {Title = "Коленвал", FullName = "Коленвал Т-150", Contours = bytes },
             };
 
-            string sqlQuery = "SELECT * FROM Detail";
 
-            var result = dbWork.SelectSqlFromDetail(sqlQuery);
 
-            foreach (var item in result)
-            {
-                Console.WriteLine($"Название детали: {item.Title}");
-                Console.WriteLine($"Описание детали: {item.FullName}");
-                Console.WriteLine();
-            }
+            Console.WriteLine(dbWork.InsertDetail(details));
+            //string sqlQuery = "SELECT * FROM Detail";
+
+            //var result = dbWork.SelectSqlFromDetail(sqlQuery);
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine($"Название детали: {item.Title}");
+            //    Console.WriteLine($"Описание детали: {item.FullName}");
+            //    Console.WriteLine();
+            //}
         }
     }
 }

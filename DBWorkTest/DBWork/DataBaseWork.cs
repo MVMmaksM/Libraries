@@ -32,14 +32,14 @@ namespace DBWorkTest.DBWork
             }
         }
 
-        public void InsertDetail(ICollection<Detail> details)
+        public int InsertDetail(ICollection<Detail> details)
         {
             if (details is not null)
             {
                 using (var appContext = new ApplicationContext(ConnectionString))
                 {
                     appContext.Detail.AddRange(details);
-                    appContext.SaveChanges();
+                    return appContext.SaveChanges();
                 }
             }
             else
