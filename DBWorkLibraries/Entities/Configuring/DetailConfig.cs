@@ -14,7 +14,7 @@ namespace DBWorkTest.Entities.Configuring
 
             entity.Property(p => p.FullName).HasMaxLength(100).IsConcurrencyToken();
             entity.Property(p => p.Title).HasMaxLength(100).IsConcurrencyToken();
-            entity.Property(p => p.Contours).IsConcurrencyToken();
+            entity.Property(p => p.Contours).IsConcurrencyToken();           
         }
     }
 }
