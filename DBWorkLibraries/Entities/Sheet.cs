@@ -2,7 +2,7 @@
 
 public class Sheet
 {
-    public long Id { get; set; }
+    public long Id { get;}
     public string Title { get; set; } = null!;
     public string FullName { get; set; } = null!;
     public float Width { get; set; }
