@@ -207,12 +207,44 @@ namespace DBWorkLibraries.DBWork
                 using (var appContext = new ApplicationContext(ConnectionString))
                 {
                     appContext.Detail.RemoveRange(deletedDetails);
-                    return appContext.SaveChanges(); // обеовляем в БД
+                    return appContext.SaveChanges(); 
                 }
             }
             else
             {
-                throw new Exception("Updated sheets is null");
+                throw new Exception("Deleted details is null");
+            }
+        }
+
+        public int DeleteMaterial(ICollection<Material> deletedMaterials)
+        {
+            if (deletedMaterials is not null)
+            {
+                using (var appContext = new ApplicationContext(ConnectionString))
+                {
+                    appContext.Material.RemoveRange(deletedMaterials);
+                    return appContext.SaveChanges();
+                }
+            }
+            else
+            {
+                throw new Exception("Deleted materials is null");
+            }
+        }
+
+        public int DeleteSheet(ICollection<Sheet> deletedSheets)
+        {
+            if (deletedSheets is not null)
+            {
+                using (var appContext = new ApplicationContext(ConnectionString))
+                {
+                    appContext.Sheet.RemoveRange(deletedSheets);
+                    return appContext.SaveChanges();
+                }
+            }
+            else
+            {
+                throw new Exception("Deleted sheets is null");
             }
         }
         //public ICollection<Detail> SearchDetail(Func<Detail, bool> predicate)
