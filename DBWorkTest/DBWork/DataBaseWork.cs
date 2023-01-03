@@ -141,14 +141,14 @@ namespace DBWorkTest.DBWork
             }
         }
 
-        public ICollection<Detail> SearchDetail(Func<Detail, bool> predicate)
-        {
-            using (var appContext = new ApplicationContext(ConnectionString))
-            {
-                IQueryable<Detail> a = appContext.Detail;
-                var c = a.Where(predicate).ToList();                
-                return c;
-            }
-        }
+        //public ICollection<Detail> SearchDetail(Func<Detail, bool> predicate)
+        //{
+        //    using (var appContext = new ApplicationContext(ConnectionString))
+        //    {
+        //        IQueryable<Detail> a = appContext.Detail;
+        //        var c = a.Where(predicate).ToList();                
+        //        return c;
+        //    }
+        //}
     }
 }
