@@ -24,13 +24,13 @@ namespace DBWorkTest
             //};
 
 
-           var res = dbWork.SearchDetail(d=>d.Id==1);
+           //var res = dbWork.SearchDetail(d=>d.Id==1);
 
-            foreach (var item in res)
-            {
-                Console.WriteLine(item.Id.ToString());
-                Console.WriteLine(item.Title);
-            }
+            //foreach (var item in res)
+            //{
+            //    Console.WriteLine(item.Id.ToString());
+            //    Console.WriteLine(item.Title);
+            //}
 
             //Console.WriteLine(dbWork.InsertDetail(details));
             //string sqlQuery = "SELECT * FROM Detail";

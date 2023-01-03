@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DBWorkLibraries.DBWork
 {
-    internal class DataBaseWork
+    public class DataBaseWork
     {
         public string ConnectionString { get; }
         public DataBaseWork(string connectionString)
