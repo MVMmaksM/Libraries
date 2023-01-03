@@ -142,7 +142,7 @@ namespace DBWorkLibraries.DBWork
             {
                 using (var appContext = new ApplicationContext(ConnectionString))
                 {
-                    appContext.UpdateRange(updatedDetails); // начинаем отслеживать измененные сущности
+                    appContext.Detail.UpdateRange(updatedDetails); // начинаем отслеживать измененные сущности
                     return appContext.SaveChanges(); // обеовляем в БД
                 }
             }
@@ -158,7 +158,7 @@ namespace DBWorkLibraries.DBWork
             {
                 using (var appContext = new ApplicationContext(ConnectionString))
                 {
-                    appContext.UpdateRange(updatedMaterials); // начинаем отслеживать измененные сущности
+                    appContext.Material.UpdateRange(updatedMaterials); // начинаем отслеживать измененные сущности
                     return appContext.SaveChanges(); // обеовляем в БД
                 }
             }
@@ -174,7 +174,7 @@ namespace DBWorkLibraries.DBWork
             {
                 using (var appContext = new ApplicationContext(ConnectionString))
                 {
-                    appContext.UpdateRange(updatedSheets); // начинаем отслеживать измененные сущности
+                    appContext.Sheet.UpdateRange(updatedSheets); // начинаем отслеживать измененные сущности
                     return appContext.SaveChanges(); // обеовляем в БД
                 }
             }
@@ -190,13 +190,29 @@ namespace DBWorkLibraries.DBWork
             {
                 using (var appContext = new ApplicationContext(ConnectionString))
                 {
-                    appContext.UpdateRange(updatedCuttingMaps); // начинаем отслеживать измененные сущности
+                    appContext.CuttingMap.UpdateRange(updatedCuttingMaps); // начинаем отслеживать измененные сущности
                     return appContext.SaveChanges(); // обеовляем в БД
                 }
             }
             else
             {
                 throw new Exception("Updated cutting maps is null");
+            }
+        }
+
+        public int DeleteDetail(ICollection<Detail> deletedDetails) 
+        {
+            if (deletedDetails is not null)
+            {
+                using (var appContext = new ApplicationContext(ConnectionString))
+                {
+                    appContext.Detail.RemoveRange(deletedDetails);
+                    return appContext.SaveChanges(); // обеовляем в БД
+                }
+            }
+            else
+            {
+                throw new Exception("Updated sheets is null");
             }
         }
         //public ICollection<Detail> SearchDetail(Func<Detail, bool> predicate)
