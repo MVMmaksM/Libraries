@@ -13,19 +13,26 @@ namespace DBWorkTest
 
             DataBaseWork dbWork = new DataBaseWork(connectionString);
 
-            byte[] bytes = Encoding.ASCII.GetBytes(connectionString);
+            //byte[] bytes = Encoding.ASCII.GetBytes(connectionString);
 
-            ICollection<Detail> details = new List<Detail>()
+            //ICollection<Detail> details = new List<Detail>()
+            //{
+            //    new Detail() {Title = "Шестеренка", FullName = "Шестеренка распредвала", Contours = bytes },
+            //    new Detail() {Title = "Шпилька", FullName = "Шпилька распредвала", Contours = bytes },
+            //    new Detail() {Title = "Распредвал", FullName = "Распредвал для КЗКТ", Contours = bytes },
+            //    new Detail() {Title = "Коленвал", FullName = "Коленвал Т-150", Contours = bytes },
+            //};
+
+
+           var res = dbWork.SearchDetail(d=>d.Id==1);
+
+            foreach (var item in res)
             {
-                new Detail() {Title = "Шестеренка", FullName = "Шестеренка распредвала", Contours = bytes },
-                new Detail() {Title = "Шпилька", FullName = "Шпилька распредвала", Contours = bytes },
-                new Detail() {Title = "Распредвал", FullName = "Распредвал для КЗКТ", Contours = bytes },
-                new Detail() {Title = "Коленвал", FullName = "Коленвал Т-150", Contours = bytes },
-            };
+                Console.WriteLine(item.Id.ToString());
+                Console.WriteLine(item.Title);
+            }
 
-
-
-            Console.WriteLine(dbWork.InsertDetail(details));
+            //Console.WriteLine(dbWork.InsertDetail(details));
             //string sqlQuery = "SELECT * FROM Detail";
 
             //var result = dbWork.SelectSqlFromDetail(sqlQuery);

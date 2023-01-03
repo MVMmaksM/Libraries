@@ -48,14 +48,14 @@ namespace DBWorkTest.DBWork
             }
         }
 
-        public void InsertMaterial(ICollection<Material> materials)
+        public int InsertMaterial(ICollection<Material> materials)
         {
             if (materials is not null)
             {
                 using (var appContext = new ApplicationContext(ConnectionString))
                 {
                     appContext.Material.AddRange(materials);
-                    appContext.SaveChanges();
+                    return appContext.SaveChanges();
                 }
             }
             else
@@ -64,14 +64,14 @@ namespace DBWorkTest.DBWork
             }
         }
 
-        public void InsertSheet(ICollection<Sheet> sheets)
+        public int InsertSheet(ICollection<Sheet> sheets)
         {
             if (sheets is not null)
             {
                 using (var appContext = new ApplicationContext(ConnectionString))
                 {
                     appContext.Sheet.AddRange(sheets);
-                    appContext.SaveChanges();
+                    return appContext.SaveChanges();
                 }
             }
             else
@@ -80,14 +80,14 @@ namespace DBWorkTest.DBWork
             }
         }
 
-        public void InsertCuttingMap(ICollection<CuttingMap> cuttingMaps)
+        public int InsertCuttingMap(ICollection<CuttingMap> cuttingMaps)
         {
             if (cuttingMaps is not null)
             {
                 using (var appContext = new ApplicationContext(ConnectionString))
                 {
                     appContext.CuttingMap.AddRange(cuttingMaps);
-                    appContext.SaveChanges();
+                    return appContext.SaveChanges();
                 }
             }
             else
@@ -138,6 +138,16 @@ namespace DBWorkTest.DBWork
             else
             {
                 throw new Exception("SqlQuery is null");
+            }
+        }
+
+        public ICollection<Detail> SearchDetail(Func<Detail, bool> predicate)
+        {
+            using (var appContext = new ApplicationContext(ConnectionString))
+            {
+                IQueryable<Detail> a = appContext.Detail;
+                var c = a.Where(predicate).ToList();                
+                return c;
             }
         }
     }
