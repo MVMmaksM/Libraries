@@ -136,6 +136,69 @@ namespace DBWorkLibraries.DBWork
             }
         }
 
+        public int UpdateDetail(ICollection<Detail> updatedDetails)
+        {
+            if (updatedDetails is not null)
+            {
+                using (var appContext = new ApplicationContext(ConnectionString))
+                {
+                    appContext.UpdateRange(updatedDetails); // начинаем отслеживать измененные сущности
+                    return appContext.SaveChanges(); // обеовляем в БД
+                }
+            }
+            else
+            {
+                throw new Exception("Details is null");
+            }
+        }
+
+        public int UpdateMaterial(ICollection<Material> updatedMaterials)
+        {
+            if (updatedMaterials is not null)
+            {
+                using (var appContext = new ApplicationContext(ConnectionString))
+                {
+                    appContext.UpdateRange(updatedMaterials); // начинаем отслеживать измененные сущности
+                    return appContext.SaveChanges(); // обеовляем в БД
+                }
+            }
+            else
+            {
+                throw new Exception("Updated materials is null");
+            }
+        }
+
+        public int UpdateSheet(ICollection<Sheet> updatedSheets)
+        {
+            if (updatedSheets is not null)
+            {
+                using (var appContext = new ApplicationContext(ConnectionString))
+                {
+                    appContext.UpdateRange(updatedSheets); // начинаем отслеживать измененные сущности
+                    return appContext.SaveChanges(); // обеовляем в БД
+                }
+            }
+            else
+            {
+                throw new Exception("Updated sheets is null");
+            }
+        }
+
+        public int UpdateCuttingMap(ICollection<CuttingMap> updatedCuttingMaps)
+        {
+            if (updatedCuttingMaps is not null)
+            {
+                using (var appContext = new ApplicationContext(ConnectionString))
+                {
+                    appContext.UpdateRange(updatedCuttingMaps); // начинаем отслеживать измененные сущности
+                    return appContext.SaveChanges(); // обеовляем в БД
+                }
+            }
+            else
+            {
+                throw new Exception("Updated cutting maps is null");
+            }
+        }
         //public ICollection<Detail> SearchDetail(Func<Detail, bool> predicate)
         //{
         //    using (var appContext = new ApplicationContext(ConnectionString))
